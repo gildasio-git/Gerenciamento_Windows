@@ -111,6 +111,8 @@ A partir da janela de serviços você pode visualizar quais serviços estão ini
     • write: Wordpad 
 
 
+CORRIGINDO ERRO CRÍTICO MENU INICIAR WINDOWS 10
+
 Inserir computador no domínio através do PowerShell
 
 Add-Computer –DomainName dominio.local -NewName novo-nome –Restart 
@@ -118,3 +120,20 @@ Add-Computer –DomainName dominio.local -NewName novo-nome –Restart 
     • -NewName  Altera o nome do computador 
     • -Restart Reinicia o computador
     • Em itálico preencha de acordo com o cliente que será feito o comando.  
+
+Passo 1
+Execute o powershell e cole este comando:
+Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+
+
+Após concluir o comando anterior, cole este:
+Get-appxpackage -all *shellexperience* -packagetype bundle |% {add-appxpackage -register -disabledevelopmentmode ($_.installlocation + “C:\Program Files\WindowsApps\Microsoft.Windows.ShellExperienceHost_1.0.0.2_neutral_ShellExperienceHost.laac0539cc_8wekyb3d8bbwe\AppxManifest.xml”)}
+
+
+E reinicialize o equipamento, se não resolver faço o passo 2 acesse o regedit  e se posicione na chave:
+HKEY_CURRENT_USER\Software\Classes
+
+
+Dê permissão de controle total para todos e todos os aplicativos.
+
+
