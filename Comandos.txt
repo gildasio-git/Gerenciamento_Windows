@@ -137,3 +137,11 @@ HKEY_CURRENT_USER\Software\Classes
 Dê permissão de controle total para todos e todos os aplicativos.
 
 
+LISTANDO E REMOVENDO ATUALIZAÇÕES DO WINDOWS VIA PROMPT 
+
+Listar Atualizações
+wmic qfe list brief /format:table
+
+Remover  atualização
+wusa /uninstall /kb:HotFixID  (Substitua o HotFixID pelo kb da instalação 
+exemplo: kb:5005565
